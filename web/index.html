@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<teta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iskarion H.Q.</title>
+
+<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" href="font.css" />
+<style>
+
+</style>
+</head>
+<body>
+<canvas id="starfield" width="120" height="80"></canvas>
+<div class="gba-screen">
+
+    <div class="info-box">
+        ISKARION
+        200 IN 1
+    </div>
+
+    <ul class="menu">
+        <a target="_blank" href="https://melodify.ddns.net">            <li><span class="num">001</span> MELODIFY        </li></a>
+        <a target="_blank" href="https://m4gtracker.ddns.net">          <li><span class="num">002</span> M4GTRACKER      </li></a>
+        <a target="_blank" href="https://warhammer.iskarion.ddns.net">  <li><span class="num">003</span> WARHAMMER       </li></a>
+        <a target="_blank" href="https://scenia.iskarion.ddns.net">     <li><span class="num">004</span> SCENIA          </li></a>
+        <a target="_blank" href="https://db.iskarion.ddns.net">         <li><span class="num">005</span> PGADMIN         </li></a>
+        <a target="_blank" href="https://trickynoid.iskarion.ddns.net"> <li><span class="num">006</span> TRICKYNOID      </li></a>
+        <a target="_blank" href="https://pacman.iskarion.ddns.net">     <li><span class="num">007</span> PACMAN          </li></a>
+        <a target="_blank" href="https://ticketshare.iskarion.ddns.net"><li><span class="num">008</span> TICKETSHARE     </li></a>
+        <a target="_blank" href="https://auth.iskarion.ddns.net">       <li><span class="num">009</span> AUTHENTICATION  </li></a>
+        <a target="_blank" href=""><li><span class="num">010</span> ----------      </li></a>
+        <a target="_blank" href=""><li><span class="num">011</span> ----------      </li></a>
+        <a target="_blank" href=""><li><span class="num">012</span> ----------      </li></a>
+        <a target="_blank" href=""><li><span class="num">013</span> ----------      </li></a>
+        <a target="_blank" href=""><li><span class="num">014</span> ----------      </li></a>
+        <a target="_blank" href=""><li><span class="num">015</span> ----------      </li></a>
+        <a target="_blank" href=""><li><span class="num">016</span> ----------      </li></a>
+        <a target="_blank" href=""><li><span class="num">017</span> ----------      </li></a>
+        <a target="_blank" href=""><li><span class="num">018</span> ----------      </li></a>
+        <a target="_blank" href=""><li><span class="num">020</span> ----------      </li></a>
+    </ul>
+
+</div>
+
+<script>
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+
+    // Configuración de la animación
+    const NUM_STARS = 400; // Número total de estrellas
+    const SPEED = 2;       // Velocidad del movimiento
+    let stars = [];
+
+    // Dimensiones del canvas
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+
+    // Ajustar el tamaño del lienzo al cambiar el tamaño de la ventana
+    function resize() {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Clase para gestionar cada estrella individualmente
+    class Star {
+        constructor() {
+            this.reset();
+        }
+
+        // Inicializa o reutiliza una estrella cuando sale de la pantalla
+        reset() {
+            // Posición X e Y respecto al centro de la pantalla
+            this.x = (Math.random() - 0.5) * w;
+            this.y = (Math.random() - 0.5) * h;
+            // Profundidad Z (distancia del espectador)
+            this.z = Math.random() * w;
+        }
+
+        // Actualiza la posición física de la estrella
+        update() {
+            // Nos acercamos a la estrella restando profundidad
+            this.z -= SPEED;
+
+            // Si sobrepasa al espectador, se reinicia al fondo
+            if (this.z <= 0) {
+                this.reset();
+            }
+        }
+
+        // Dibuja la estrella en su posición proyectada en 2D
+        draw() {
+            // Proyección geométrica 3D a 2D basada en la perspectiva de la profundidad (Z)
+            const px = (this.x / this.z) * w + w / 2;
+            const py = (this.y / this.z) * h + h / 2;
+
+            // Si la estrella se proyecta fuera de los límites de la pantalla, la reiniciamos
+            if (px < 0 || px > w || py < 0 || py > h) {
+                this.reset();
+                return;
+            }
+
+            // El tamaño aumenta a medida que la estrella se acerca (Z disminuye)
+            const size = (1 - this.z / w) * 4;
+
+            // Opacidad progresiva para que aparezcan suavemente desde el fondo
+            const opacity = 1 - this.z / w;
+
+            // Renderizado en el lienzo
+            ctx.beginPath();
+            ctx.arc(px, py, size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+            ctx.fill();
+        }
+    }
+
+    // Población inicial de la matriz de estrellas
+    for (let i = 0; i < NUM_STARS; i++) {
+        stars.push(new Star());
+    }
+
+    // Bucle de animación continuo (Render Loop)
+    function animate() {
+        // Fondo negro limpio para pintar el nuevo fotograma
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, w, h);
+
+        // Actualizar y dibujar cada elemento de la colección
+        stars.forEach(star => {
+            star.update();
+            star.draw();
+        });
+
+        // Solicita al navegador renderizar el siguiente cuadro de animación
+        requestAnimationFrame(animate);
+    }
+
+    // Arrancar la simulación
+    animate();
+</script>
+
+</body>
+</html>

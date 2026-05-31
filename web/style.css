@@ -1,0 +1,134 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    font-family: 'm4geek';
+    font-size: 16px;
+    outline: none !important;
+}
+
+
+body{
+    margin:0;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height: 100%;
+    width: 100%;
+    font-family: "Courier New", monospace;
+    zoom: 4;
+}
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    image-rendering: pixelated;
+}
+
+.gba-screen{
+    width:240px;
+    height:160px;
+    background: transparent !important;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    image-rendering: pixelated;
+
+}
+
+/* Ventana superior */
+.info-box{
+    text-align: center;
+    width:80px;
+    left: 70px;
+    top: 0px;
+    position: absolute;
+    height:32px;
+    background:#95d900;
+    border:8px solid #007000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-weight:bold;
+    text-shadow:1px 1px #000;
+    font-size:14px;
+}
+
+/* Lista */
+.menu{
+    list-style:none;
+    margin:0;
+    padding:0 0 0 32px;
+    font-size:13px;
+    line-height:0.95;
+    height: calc( 160px - 48px);
+    overflow-y: hidden;
+    line-height: 8px;
+    width: 208px;
+    position: absolute;
+    top: 48px;
+    display: inline-block;
+}
+
+.menu li{
+    display:flex;
+    align-items:center;
+    color:#d8f6ff;
+    text-shadow:1px 1px #003;
+    white-space:nowrap;
+}
+
+/* Número */
+.num{
+    width:28px;
+    color:#ffffff;
+}
+
+/* Elemento seleccionado */
+li:hover,
+li:active{
+    cursor: pointer;
+    position:relative;
+}
+
+li:hover::before,
+li:active::before{
+    content:"▶";
+    position:absolute;
+    left:-18px;
+    top: 2px;
+    color:#ff80ff;
+    font-size:8px;
+}
+
+
+a:hover,
+a:active,
+a:visited,
+a {
+    text-decoration: none !important;
+    color: #ffffff;
+}
+li:hover ,
+li:active {
+    color:#00ffff !important;
+}
+
+/* Simulación de estrellas de fondo */
+.gba-screen::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: transparent !important;
+    background-size:28px 28px;
+    opacity:.35;
+    pointer-events:none;
+}
+
