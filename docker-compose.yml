@@ -1,5 +1,5 @@
 networks:
-  proxy_sql-network:
+  proxy_primary-network:
     external: true
 services:
   menu-service:
@@ -7,7 +7,7 @@ services:
     container_name: hq-menu
     hostname: hq-menu
     networks:
-      - proxy_sql-network
+      - proxy_primary-network
     volumes:
       - /src/menu/web:/usr/share/nginx/html:ro
     restart: unless-stopped

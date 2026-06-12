@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<teta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"-->
 <title>Iskarion H.Q.</title>
 
 <link rel="stylesheet" type="text/css" href="style.css" />
@@ -13,37 +14,44 @@
 </head>
 <body>
 <canvas id="starfield" width="120" height="80"></canvas>
+<div class="contenedor">
+  <iframe class="rectangulo" src="https://livingworlds.iskarion.ddns.net" name="container" id="container"></iframe>
+</div>
 <div class="gba-screen">
 
     <div class="info-box">
         ISKARION
-        200 IN 1
+        H.Q.
     </div>
 
     <ul class="menu">
-        <a target="_blank" href="https://melodify.ddns.net">            <li><span class="num">001</span> MELODIFY        </li></a>
-        <a target="_blank" href="https://m4gtracker.ddns.net">          <li><span class="num">002</span> M4GTRACKER      </li></a>
-        <a target="_blank" href="https://warhammer.iskarion.ddns.net">  <li><span class="num">003</span> WARHAMMER       </li></a>
-        <a target="_blank" href="https://scenia.iskarion.ddns.net">     <li><span class="num">004</span> SCENIA          </li></a>
-        <a target="_blank" href="https://db.iskarion.ddns.net">         <li><span class="num">005</span> PGADMIN         </li></a>
-        <a target="_blank" href="https://trickynoid.iskarion.ddns.net"> <li><span class="num">006</span> TRICKYNOID      </li></a>
-        <a target="_blank" href="https://pacman.iskarion.ddns.net">     <li><span class="num">007</span> PACMAN          </li></a>
-        <a target="_blank" href="https://ticketshare.iskarion.ddns.net"><li><span class="num">008</span> TICKETSHARE     </li></a>
-        <a target="_blank" href="https://auth.iskarion.ddns.net">       <li><span class="num">009</span> AUTHENTICATION  </li></a>
-        <a target="_blank" href="https://minesweeper.iskarion.ddns.net"><li><span class="num">010</span> MINESWEEPER     </li></a>
-        <a target="_blank" href="https://flysim.iskarion.ddns.net">     <li><span class="num">011</span> FLY SIMULATOR   </li></a>
-        <a target="_blank" href="https://webmail.iskarion.ddns.net">    <li><span class="num">012</span> WEBMAIL         </li></a>
-        <a target="_blank" href=""><li><span class="num">013</span> ----------      </li></a>
-        <a target="_blank" href=""><li><span class="num">014</span> ----------      </li></a>
-        <a target="_blank" href=""><li><span class="num">015</span> ----------      </li></a>
-        <a target="_blank" href=""><li><span class="num">016</span> ----------      </li></a>
-        <a target="_blank" href=""><li><span class="num">017</span> ----------      </li></a>
-        <a target="_blank" href=""><li><span class="num">018</span> ----------      </li></a>
-        <a target="_blank" href=""><li><span class="num">020</span> ----------      </li></a>
+        <a atarget="container" href="https://melodify.ddns.net">                <li><span class="num">001</span> MELODIFY        </li></a>
+        <a atarget="container" href="https://m4gtracker.ddns.net">              <li><span class="num">002</span> M4GTRACKER      </li></a>
+        <a atarget="container" href="https://warhammer.iskarion.ddns.net">      <li><span class="num">003</span> WARHAMMER       </li></a>
+        <a atarget="container" href="https://scenia.iskarion.ddns.net">         <li><span class="num">004</span> SCENIA          </li></a>
+        <a atarget="container" href="https://db.iskarion.ddns.net">             <li><span class="num">005</span> PGADMIN         </li></a>
+        <a atarget="container" href="https://trickynoid.iskarion.ddns.net">     <li><span class="num">006</span> TRICKYNOID      </li></a>
+        <a atarget="container" href="https://pacman.iskarion.ddns.net">         <li><span class="num">007</span> PACMAN          </li></a>
+        <a atarget="container" href="https://ticketshare.iskarion.ddns.net">    <li><span class="num">008</span> TICKETSHARE     </li></a>
+        <a atarget="container" href="https://auth.iskarion.ddns.net">           <li><span class="num">009</span> AUTHENTICATION  </li></a>
+        <a atarget="container" href="https://minesweeper.iskarion.ddns.net">    <li><span class="num">010</span> MINESWEEPER     </li></a>
+        <a atarget="container" href="https://flysim.iskarion.ddns.net">         <li><span class="num">011</span> FLY SIMULATOR   </li></a>
+        <a atarget="container" href="https://webmail.iskarion.ddns.net">        <li><span class="num">012</span> WEBMAIL         </li></a>
+        <a atarget="container" href="https://tetris.iskarion.ddns.net">         <li><span class="num">013</span> TETRIS          </li></a>
+        <a atarget="container" href="https://pinball.iskarion.ddns.net">        <li><span class="num">014</span> PINBALL         </li></a>
+        <a atarget="container" href="https://byteworld.iskarion.ddns.net">      <li><span class="num">015</span> BYTEWORLD       </li></a>
+        <a atarget="container" href="https://cutremux.iskarion.ddns.net">       <li><span class="num">016</span> CUT & REMUX     </li></a>
+        <a atarget="container" href="https://cells.iskarion.ddns.net">          <li><span class="num">017</span> CELL SIMULATOR  </li></a>
+        <a atarget="container" href="https://jmud.iskarion.ddns.net">           <li><span class="num">018</span> JMUD            </li></a>
+        <a atarget="container" href="https://snake.iskarion.ddns.net">          <li><span class="num">019</span> SNAKE           </li></a>
+        <a atarget="container" href="https://dungeon.iskarion.ddns.net">        <li><span class="num">020</span> DUNGEON         </li></a>
+        <a atarget="container" href="https://livingworlds.iskarion.ddns.net">   <li><span class="num">021</span> LIVINGWORLDS    </li></a>
+        <a atarget="container" href="https://blackbox.iskarion.ddns.net">       <li><span class="num">022</span> BLACKBOX        </li></a>
+        <a atarget="container" href="https://gol.iskarion.ddns.net">            <li><span class="num">023</span> CONWAY'S G.O.L. </li></a>
+        <a atarget="container" href="https://thingcodex.iskarion.ddns.net">     <li><span class="num">024</span> THINGCODEX      </li></a>
     </ul>
 
 </div>
-
 <script>
     const canvas = document.getElementById('starfield');
     const ctx = canvas.getContext('2d');
